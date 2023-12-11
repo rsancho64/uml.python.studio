@@ -5,16 +5,24 @@ contadorEmpleados = 0
 class Employee:
 
     def __init__(self, aName) -> None:
+        global contadorEmpleados
         self.name = aName
-        self.id = aName # contadorEmpleados
-        # contadorEmpleados += 1
+        self.id = contadorEmpleados
+        contadorEmpleados += 1
 
     def __str__(self) -> None:
         return (f"{self.id}:{self.name}")
 
 class SalaryEmployee(Employee):
-    pass
+    
+    def __init__(self, aName, aWage) -> None:
+        super(aName) # ...
 
+    def calculate_payroll(self) -> int
+
+
+class ComissionEmployee(SalaryEmployee):
+    pass
 
 class HourlyEmployee(Employee):
     pass
@@ -27,6 +35,9 @@ if __name__ == "__main__":
 
     se = SalaryEmployee("mario")
     print(repr(se), str(se))
+
+    ce = ComissionEmployee("andres")
+    print(repr(ce), str(ce))
 
     he = HourlyEmployee("juan")
     print(repr(he), str(he))
