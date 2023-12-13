@@ -44,10 +44,10 @@ class SalaryEmployee(Employee):
 # -------------------------------------------------------------------------------
 
 
-class ComissionEmployee(Employee):
+class ComissionEmployee(SalaryEmployee):
 
-    def __init__(self, aName, aComissionRate = 10) -> None:
-        super().__init__(aName)
+    def __init__(self, aName, aWage, aComissionRate = 10) -> None:
+        super().__init__(aName, aWage)
         self.comissionRate = aComissionRate if aComissionRate < 100 else 10
         self.ventas = 0
 
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     se = SalaryEmployee("mario", 1500)  # 1500 brutos/mes
     print(se)
 
-    ce = ComissionEmployee("diego", 20)  # 20% de comiison de ventas
+    ce = ComissionEmployee("diego", 1500, 20)  # 20% de comiison de ventas
     print(ce)
 
     he = HourlyEmployee("juan", 60)  # 60 €/hora
