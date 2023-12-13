@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+# code from https://blog.teclado.com/python-abc-abstract-base-classes/
 
-# abc is a builtin module, we have to import ABC and abstractmethod
+from abc import ABC, abstractmethod  # a builtin module
 
 
-class Animal(ABC):  # Inherit from ABC(Abstract base class)
+class Animal(ABC):  # ABC: Abstract base class
 
     @property
     def food_eaten(self):
@@ -16,17 +16,18 @@ class Animal(ABC):  # Inherit from ABC(Abstract base class)
         else:
             raise ValueError(f"You can't feed this animal with {food}.")
 
-    @property
+    # @property
     @abstractmethod
     def diet(self):
+        """ok food list"""
         pass
 
-    @abstractmethod  # Decorator to define an abstract method
+    @abstractmethod
     def feed(self):
         pass  # print("ñam")
 
     @abstractmethod
-    def do(self, action):  # Renamed it to "do", and it has "action" parameter
+    def do(self, action):
         pass
 
 
@@ -39,11 +40,11 @@ class Lion(Animal):
     def do(self, action, time):  # It's still mandatory to implement action. "time" is our other parameter
         print(f"{action} a lion! At {time}")
 
-    def feed(self):
-        self.give_food()
+    def feed(self, time):
+        print(f"Feeding a lion with {self._food} meat! At {time}")
 
-    def give_food(self):
-        print("Feeding a lion with raw meat!")
+    # def give_food(self):
+    #     print("Feeding a lion with raw meat!")
 
 
 class Panda(Animal):
@@ -51,11 +52,11 @@ class Panda(Animal):
     def do(self, action, time):
         print(f"{action} a panda! At {time}")
 
-    def feed(self):
-        self.wrong_name()
+    def feed(self, time):
+        print(f"Feeding a snake with {self._food} meat! At {time}")
 
-    def wrong_name(self):
-        print("Feeding a panda with some tasty bamboo!")
+    # def wrong_name(self):
+    #     print("Feeding a panda with some tasty bamboo!")
 
 
 class Snake(Animal):
@@ -67,11 +68,11 @@ class Snake(Animal):
     def do(self, action, time):
         print(f"{action} a snake! At {time}")
 
-    def feed(self):
-        self.feed_snake()
+    def feed(self, time):
+        print(f"Feeding a snake with {self._food} meat! At {time}")
 
-    def feed_snake(self):
-        print("Feeding a snake with mice!")
+    # def feed_snake(self):
+    #     print("Feeding a snake with mice!")
 
 
 if __name__ == "__main__":
@@ -103,7 +104,17 @@ if __name__ == "__main__":
 
     leo = Lion()
     leo.food_eaten = "antelope"
-    leo.feed() #"10:10 AM")
+    leo.feed("10:10 AM")
+    leo.do("pee", "10:10 AM")
+
     adam = Snake()
     adam.food_eaten = "frog"
-    adam.feed() # "10:20 AM")
+    adam.feed("10:10 AM")
+
+    # leo2 = Lion()
+    # # leo2.food_eaten = "cauliflower"
+    # leo2.feed("10:10 AM")
+
+    # leo3 = Lion()
+    # leo3.food_eaten = "carrot"
+    # leo3.feed("10:10 AM")

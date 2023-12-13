@@ -1,5 +1,5 @@
-# inspirado en https://realpython.com/lessons/uml-diagrams/
-
+# inspirado en: https://realpython.com/lessons/uml-diagrams/
+# interfaces:   https://realpython.com/python-interface/#using-abcabcmeta
 # -------------------------------------------------------------------------------
 
 # contadorEmpleados = 0  # BAD practise
