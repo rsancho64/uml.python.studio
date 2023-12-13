@@ -21,9 +21,8 @@ class Employee:
 
     def __str__(self) -> None:
         answ = ""
-        answ += repr(self) + '\n\t'  # CAN TOGGLE THIS
-        L = ["".join(it) for it in self.__dict__]
-        answ += (str(L))
+        # answ += repr(self) + '\n\t'  # CAN TOGGLE THIS
+        answ += str(vars(self))
         return answ
 
 # -------------------------------------------------------------------------------
