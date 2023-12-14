@@ -2,11 +2,19 @@
 # interfaces:   https://realpython.com/python-interface/#using-abcabcmeta
 # -------------------------------------------------------------------------------
 
-# contadorEmpleados = 0  # BAD practise
+import abc
+
+class Interface(metaclass=abc.ABCMeta):
+    """interfase de pago para empleados diversos"""    
+
+    @abc.abstractmethod
+    def calculate_payroll(self):
+        """pagar al trabajador"""
+        raise NotImplementedError
 
 class Employee:
     """superclase para empleados especificos"""
-    contadorEmpleados = 0  # BETTER: use: limited instances, singleton; ...
+    contadorEmpleados = 0
 
     def __init__(self, aName) -> None:
         self.name = aName
@@ -38,8 +46,10 @@ class SalaryEmployee(Employee):
     def anotaDias(self, masDias):
         self.dias += masDias
 
-    def calculate_payroll(self) -> int:
-        pass
+    def calculate_payroll(self) -> float:
+        cantidad = self.wage * self.dias / 30
+        #print (f"soy un {self.__class__.__name__} y he cobrado {cantidad}")
+        return cantidad
 
 # -------------------------------------------------------------------------------
 
@@ -55,7 +65,10 @@ class ComissionEmployee(SalaryEmployee):
         self.ventas += masVentas
 
     def calculate_payroll(self) -> int:
-        pass
+        cantidad = super().calculate_payroll()
+        cantidad += self.ventas * self.comissionRate / 100
+        return cantidad
+        
 
 # -------------------------------------------------------------------------------
 
@@ -71,7 +84,8 @@ class HourlyEmployee(Employee):
         self.horas += masHoras
 
     def calculate_payroll(self) -> int:
-        pass
+        cantidad = self.horas * self.payPerHour
+        return cantidad
 
 
 # ===============================================================================
@@ -79,14 +93,24 @@ class HourlyEmployee(Employee):
 
 if __name__ == "__main__":
 
-    e = Employee("ana")
-    print(e)
+    # e = Employee("ana")
+    # print(e)
 
     se = SalaryEmployee("mario", 1500)  # 1500 brutos/mes
     print(se)
+    print(se.calculate_payroll())
+    se.anotaDias(15)
+    print(se.calculate_payroll())
 
     ce = ComissionEmployee("diego", 1500, 20)  # 20% de comiison de ventas
-    print(ce)
+    print(ce.calculate_payroll())
+    ce.anotaDias(15)
+    ce.anotaVentas(6000)
+    print(ce.calculate_payroll())
 
     he = HourlyEmployee("juan", 60)  # 60 €/hora
-    print(he)
+    print(he.calculate_payroll())
+    he.anotaHoras(10)
+    print(he.calculate_payroll())
+
+    
