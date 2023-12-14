@@ -12,6 +12,6 @@
 
 ### plugins en code a entornos de diagramacion ...
 
-- [ ] [plantUML](https://plantuml.com/es/)
+- [x] [plantUML](https://plantuml.com/es/)
   - [ ] [youtube](https://www.youtube.com/@TechyMaki/search?query=plantuml) (3 videos)
 - [ ] [staruml](https://staruml.io/) 

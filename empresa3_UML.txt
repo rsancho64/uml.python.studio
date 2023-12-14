@@ -1,0 +1,36 @@
+@startuml
+class Interface {
+    calculate_payroll()
+        __init__()
+}
+class Employee {
+    __str__()
+        name
+    id
+    __init__()
+}
+class SalaryEmployee {
+    anotaDias()
+    calculate_payroll()
+        wage
+    dias
+    __init__()
+}
+class ComissionEmployee {
+    anotaVentas()
+    calculate_payroll()
+        comissionRate
+    ventas
+    __init__()
+}
+class HourlyEmployee {
+    anotaHoras()
+    calculate_payroll()
+        payPerHour
+    horas
+    __init__()
+}
+Employee <|-- SalaryEmployee
+SalaryEmployee <|-- ComissionEmployee
+Employee <|-- HourlyEmployee
+@enduml
